@@ -33,17 +33,17 @@ const rolePrompt = [
 const employeePrompt = [
     {
         type: 'input',
-        name: 'First name',
+        name: 'firstName',
         message: 'Employee first name:',
     },
     {
         type: 'input',
-        name: 'Lastname',
+        name: 'lastName',
         message: 'Employee Last name:',
     },
     {
         type: 'input',
-        name: 'RoleId',
+        name: 'roleId',
         message: 'Employee role id:',
     },
     {
@@ -114,7 +114,26 @@ function viewEmployee() {
 }
 
 function addEmployee() {
-
+    inquirer
+    .prompt(employeePrompt)
+    .then(function (answer) {
+        connection.query(
+            "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)",
+            
+            [   
+                answer.firstName,
+                answer.lastName,
+                answer.roleId,
+                answer.managerid
+            ],
+            (err, res) => {
+                if (err){
+                    console.log(err);
+                }
+                init();
+            }
+        )
+    })
 }
 
 function changeEmployee() {
