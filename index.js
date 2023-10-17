@@ -25,7 +25,7 @@ const rolePrompt = [
     },
     {
         type: 'input',
-        name: 'Department ID',
+        name: 'DepartmentID',
         message: 'Department Id code:'
     },
 ];
@@ -38,17 +38,77 @@ const employeePrompt = [
     },
     {
         type: 'input',
-        name: 'Last name',
+        name: 'Lastname',
         message: 'Employee Last name:',
     },
     {
         type: 'input',
-        name: 'Role Id',
+        name: 'RoleId',
         message: 'Employee role id:',
     },
     {
         type: 'input',
-        name: 'manager id',
+        name: 'managerid',
         message: 'Employee manager id(if applicable):',
     },
 ];
+
+
+function init() {
+    inquirer
+    .prompt({
+        type: "list",
+        name: "userChoice",
+        choices: [
+            "View employees",
+            "Add employee",
+            "Change employee role",
+            "View roles",
+            "Add role",
+            "View Departments",
+            "Add Department",
+            "quit",
+        ],
+        message: "Please choose an option",
+    })
+    .then( (results) => {
+
+        Switch (results.choices) {
+            case "View employees":
+            viewEmployee();
+            break;
+
+            case "Add employee":
+            addEmployee();
+            break;
+
+            case "Change employee role":
+            changeEmployee();
+            break;
+
+            case "View roles":
+            viewRole();
+            break;
+
+            case "Add role":
+            addNewRole();
+            break;
+
+            case "View Departments":
+                viewDepartments();
+                break;
+
+            case  "Add Department":
+                addNewDepartment();
+                break;
+
+            default:
+                quit();
+                   
+        }
+    });
+}
+
+function viewEmployee() {
+    
+}
