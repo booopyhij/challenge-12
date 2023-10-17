@@ -66,6 +66,8 @@ const employeeChangePrompt = [
     },
 ];
 
+connection.connect((err) => console.log(err));
+
 function init() {
     inquirer
     .prompt({
