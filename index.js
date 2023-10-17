@@ -147,8 +147,14 @@ function changeEmployee() {
 }
 
 function viewRole() {
-
-}
+    var query = "SELECT * FROM role";
+    connection.query(query, function (err, res) {
+        if (err) {
+            console.log(err);
+            init();
+        }
+    });
+};
 
 function addNewRole() {
     inquirer
@@ -174,7 +180,13 @@ function addNewRole() {
 }
 
 function viewDepartments() {
-
+    var query = "SELECT * FROM department";
+    connection.query(query, function (err, res) {
+        if (err) {
+            console.log(err);
+            init();
+        }
+    });
 }
 
 function addNewDepartment() {
