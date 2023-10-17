@@ -28,7 +28,7 @@ const rolePrompt = [
         name: 'Department ID',
         message: 'Department Id code:'
     },
-]
+];
 
 const employeePrompt = [
     {
@@ -51,4 +51,4 @@ const employeePrompt = [
         name: 'manager id',
         message: 'Employee manager id(if applicable):',
     },
-]
+];
