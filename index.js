@@ -110,5 +110,33 @@ function init() {
 }
 
 function viewEmployee() {
+
+}
+
+function addEmployee() {
+
+}
+
+function changeEmployee() {
+
+}
+
+function viewRole() {
+
+}
+
+function addNewRole() {
+
+}
+
+function viewDepartments() {
+
+}
+
+function addNewDepartment() {
+
+}
+
+function quit() {
     
 }
