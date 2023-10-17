@@ -15,17 +15,17 @@ const departmentPrompt = [
 const rolePrompt = [
     {
         type: 'input',
-        name: 'Role',
+        name: 'role',
         message: 'New role name: '
     },
     {
         type: 'input',
-        name: 'Salary',
+        name: 'salary',
         message: 'Role salary: '
     },
     {
         type: 'input',
-        name: 'DepartmentID',
+        name: 'departmentID',
         message: 'Department Id code:'
     },
 ];
@@ -134,7 +134,7 @@ function addEmployee() {
             }
         )
     })
-}
+};
 
 function changeEmployee() {
 
@@ -145,6 +145,25 @@ function viewRole() {
 }
 
 function addNewRole() {
+    inquirer
+    .prompt(rolePrompt)
+    .then(function (answer) {
+        connection.query(
+            "INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)",
+            
+            [   
+                answer.title,
+                answer.salary,
+                answer.departmentId,
+            ],
+            (err, res) => {
+                if (err){
+                    console.log(err);
+                }
+                init();
+            }
+        )
+    })
 
 }
 
@@ -167,7 +186,7 @@ function addNewDepartment() {
                 }
             )
         })
-}
+};
 
 function quit() {
 
