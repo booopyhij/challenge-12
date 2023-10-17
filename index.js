@@ -107,11 +107,17 @@ function init() {
                    
         }
     });
-}
+};
 
 function viewEmployee() {
-
-}
+    var query = "SELECT * FROM employee";
+    connection.query(query, function (err, res) {
+        if (err) {
+            console.log(err);
+            init();
+        }
+    });
+};
 
 function addEmployee() {
     inquirer
