@@ -53,6 +53,18 @@ const employeePrompt = [
     },
 ];
 
+const employeeChangePrompt = [
+    {
+        type: 'input',
+        name: 'changeEmployee',
+        message: 'Select employee to change:',
+    },
+    {
+        type: 'input',
+        name: 'changeEmployeeRole',
+        message: 'Employee role change(by id):',
+    },
+];
 
 function init() {
     inquirer
@@ -127,6 +139,27 @@ function addEmployee() {
             "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)",
             
             [   
+                answer.changeEmployee,
+                answer.changeEmployeeRole,
+            ],
+            (err, res) => {
+                if (err){
+                    console.log(err);
+                }
+                init();
+            }
+        );
+    });
+};
+
+function changeEmployee() {
+    inquirer
+    .prompt(employeeChangePrompt)
+    .then(function (answer) {
+        connection.query(
+            "UPDATE employee SET role_id=? WHERE first_name = ?",
+            
+            [   
                 answer.firstName,
                 answer.lastName,
                 answer.roleId,
@@ -138,13 +171,9 @@ function addEmployee() {
                 }
                 init();
             }
-        )
-    })
+        );
+    });
 };
-
-function changeEmployee() {
-
-}
 
 function viewRole() {
     var query = "SELECT * FROM role";
@@ -174,10 +203,10 @@ function addNewRole() {
                 }
                 init();
             }
-        )
-    })
+        );
+    });
 
-}
+};
 
 function viewDepartments() {
     var query = "SELECT * FROM department";
@@ -187,7 +216,7 @@ function viewDepartments() {
             init();
         }
     });
-}
+};
 
 function addNewDepartment() {
     inquirer
@@ -202,10 +231,12 @@ function addNewDepartment() {
                     }
                     init();
                 }
-            )
-        })
+            );
+        });
 };
 
 function quit() {
+    connection.end();
+    process.exit();
 
-}
+};
