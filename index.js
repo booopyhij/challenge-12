@@ -134,9 +134,22 @@ function viewDepartments() {
 }
 
 function addNewDepartment() {
-
+    inquirer
+        .prompt(departmentPrompt)
+        .then(function (answer) {
+            connection.query(
+                "INSERT INTO department (name) VALUES (?)",
+                answer.Department,
+                (err, res) => {
+                    if (err){
+                        console.log(err);
+                    }
+                    init();
+                }
+            )
+        })
 }
 
 function quit() {
-    
+
 }
