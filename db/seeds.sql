@@ -1,3 +1,5 @@
+USE employee_db;
+
 INSERT INTO department (department_id, department_name)
 VALUES (1, 'tech');
 INSERT INTO department (department_id, department_name)
