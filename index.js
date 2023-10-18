@@ -4,11 +4,20 @@ const inquirer = require("inquirer");
 const mysql = require("mysql2");
 const db = require(".");
 const cTable = require("console.table");
-const {departmentPrompt, rolePrompt, employeePrompt, employeeChangePrompt } = require('questions.js')
+const {departmentPrompt, rolePrompt, employeePrompt, employeeChangePrompt } = require('./questions')
+// {
+//     type: "list",
+//     name: "choice",
+//     message: "What would you like to do?",
+//     choices: [
+//       {
+//         name: "View All Employees",
+//         value: "VIEW_EMPLOYEES"
+//       },
 
 
 connection.connect((err) => console.log(err));
-
+init();
 function init() {
     inquirer
     .prompt({
@@ -28,8 +37,9 @@ function init() {
     })
     .then( (results) => {
 
-        Switch (results.choices) {
+        switch (results.choices) {
             case "View employees":
+                console.log("test");
             viewEmployee();
             break;
 
@@ -183,3 +193,4 @@ function quit() {
     process.exit();
 
 };
+
